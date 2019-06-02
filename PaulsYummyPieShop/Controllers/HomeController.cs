@@ -24,7 +24,9 @@ namespace PaulsYummyPieShop.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Pie overview";
-            return View();
+            ViewBag.Test = "Test Property";
+            var pies = _pieRepository.GetAllPies().OrderBy(p => p.Name);
+            return View(pies);
         }
     }
 }
