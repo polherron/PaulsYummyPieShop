@@ -23,6 +23,7 @@ namespace PaulsYummyPieShop.Controllers
         //Get: /Controller
         public IActionResult Index()
         {
+            ViewBag.Title = "Pie overview";
             return View();
         }
     }
