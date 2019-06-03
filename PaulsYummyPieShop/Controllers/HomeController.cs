@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PaulsYummyPieShop.Models;
+using PaulsYummyPieShop.ViewModels;
 
 namespace PaulsYummyPieShop.Controllers
 {
@@ -23,10 +24,10 @@ namespace PaulsYummyPieShop.Controllers
         //Get: /Controller
         public IActionResult Index()
         {
-            ViewBag.Title = "Pie overview";
-            ViewBag.Test = "Test Property";
-            var pies = _pieRepository.GetAllPies().OrderBy(p => p.Name);
-            return View(pies);
+            HomeViewModel myHomeViewModel = new HomeViewModel();
+            myHomeViewModel.Title = "Paul's Pie Shop";
+            myHomeViewModel.Pies = _pieRepository.GetAllPies().OrderBy(p => p.Name).ToList();
+            return View(myHomeViewModel);
         }
     }
 }
